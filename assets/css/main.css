@@ -3636,15 +3636,48 @@ ul.check-list ul {
 
  /* HERO IMAGE RESIZE */
 .hero .hero-image img {
-  width: 65%;       /* büyükse 50%, küçükse 80% yapabilirsin */
+  width: 70%;       /* büyükse 50%, küçükse 80% yapabilirsin */
   height: auto;
   display: block;
   margin: 0 auto;
   border-radius: 20px;
 }
 
-.about .signature-section img {
-  width: 180px;
-  height: auto;
-  border-radius: 12px;
+/* === SERVICES MEDIA GRID – PHOTO & VIDEO UNIFY === */
+
+/* Grid container */
+.service-details .service-gallery {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);   /* 3 sütun */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* Fotoğraf + video boyutları */
+.service-details .service-gallery img,
+.service-details .service-gallery video {
+  width: 100%;
+  height: 220px;             /* ORTA BOY – istersen 200 / 180 yazabiliriz */
+  object-fit: cover;         /* Kırparak düzgün görünür */
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+/* Tablet */
+@media (max-width: 992px) {
+  .service-details .service-gallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobil */
+@media (max-width: 576px) {
+  .service-details .service-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .service-details .service-gallery img,
+  .service-details .service-gallery video {
+    height: 180px; /* mobil için daha küçük */
+  }
 }
