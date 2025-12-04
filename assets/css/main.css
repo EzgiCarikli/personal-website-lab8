@@ -3173,9 +3173,6 @@ section,
   /* Add your styles here */
 }
 
-/* =========================================================
-   ASSIGNMENT: CUSTOM TYPOGRAPHY SYSTEM (h1–h3 + p)
-   ====================================================== */
 body {
   font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 16px;
@@ -3191,7 +3188,7 @@ h3 {
 }
 
 h1 {
-  font-size: 2.75rem;       /* ~44px */
+  font-size: 2.75rem;       
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: 0.08em;
@@ -3199,7 +3196,7 @@ h1 {
   margin-bottom: 1.25rem;
 }
 h2 {
-  font-size: 2.1rem;        /* ~34px */
+  font-size: 2.1rem;        
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.12em;
@@ -3207,7 +3204,7 @@ h2 {
   margin-bottom: 1rem;
 }
 h3 {
-  font-size: 1.35rem;       /* ~22px */
+  font-size: 1.35rem;       
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: 0.06em;
@@ -3215,7 +3212,7 @@ h3 {
 }
 
 p {
-  font-size: 0.98rem;       /* ~15.5px */
+  font-size: 0.98rem;       
   font-weight: 400;
   line-height: 1.8;
   letter-spacing: 0.01em;
@@ -3239,12 +3236,10 @@ p {
   color: #6b7280;
 }
 
-/* =========================================================
-   ASSIGNMENT: INTERACTIVE ELEMENTS – LINKS
-   ====================================================== */
+
 
 a {
-  color: #2563eb;                 /* Mavi, okunaklı */
+  color: #2563eb;                
   text-decoration: none;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -3252,21 +3247,17 @@ a {
 }
 
 a:hover {
-  color: #1d4ed8;                 /* Biraz daha koyu mavi */
+  color: #1d4ed8;                
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
 
 a:active {
-  color: #0f172a;                 /* En koyu – tıklanmış hali */
+  color: #0f172a;                 
 }
 
-/* =========================================================
-   ASSIGNMENT: INTERACTIVE ELEMENTS – BUTTONS
-   ====================================================== */
 
-/* Tüm butonlar için temel stil */
 button,
 .btn {
   display: inline-flex;
@@ -3279,8 +3270,8 @@ button,
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  background-color: #0f172a;   /* Koyu lacivert */
-  color: #f9fafb;              /* Açık gri/beyaz */
+  background-color: #0f172a;   
+  color: #f9fafb;             
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
   transition: background-color 0.15s ease,
               transform 0.1s ease,
@@ -3288,7 +3279,7 @@ button,
               border-color 0.15s ease;
 }
 
-/* Hover: biraz yukarı kalksın + rengi az aç */
+
 button:hover,
 .btn:hover {
   background-color: #020617;
@@ -3296,14 +3287,14 @@ button:hover,
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.45);
 }
 
-/* Active: tekrar aşağı insin, gölge azalsın */
+
 button:active,
 .btn:active {
   transform: translateY(0);
   box-shadow: 0 5px 14px rgba(15, 23, 42, 0.5);
 }
 
-/* Primary buton (hero’daki View My Work vs.) */
+
 .btn-primary {
   background-color: #1d4ed8;
   border-color: #1d4ed8;
@@ -3320,7 +3311,7 @@ button:active,
   border-color: #172554;
 }
 
-/* Outline stil (hero ve about’taki ikinci butonlar için) */
+
 .btn-outline {
   background-color: transparent;
   border-color: #1d4ed8;
@@ -3504,11 +3495,7 @@ section,
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.85);
 }
 
-/* =========================================================
-   OPTIONAL: STYLED LISTS WITH PSEUDO-ELEMENTS
-   ====================================================== */
 
-/* 1) Numaralı liste – ordered list */
 ol.fancy-list {
   list-style: none;
   counter-reset: fancy-counter;
@@ -3535,7 +3522,7 @@ ol.fancy-list > li::before {
   padding: 0.15rem 0.6rem;
 }
 
-/* 2) İşaretli liste – unordered list + nested */
+
 ul.check-list {
   list-style: none;
   padding-left: 0;
@@ -3563,9 +3550,6 @@ ul.check-list ul {
   opacity: 0.9;
 }
 
-/* =========================================================
-   OPTIONAL: TABLE / DATA BLOCK STYLING
-   ====================================================== */
 
 .table-custom {
   width: 100%;
@@ -3602,11 +3586,33 @@ ul.check-list ul {
   border-bottom: 1px solid rgba(148, 163, 184, 0.6);
 }
 
-/* metin ve sayılar için hizalama */
+
 .table-custom td.text {
   text-align: left;
 }
 
 .table-custom td.number {
   text-align: right;
+}
+
+/* === PORTFOLIO GRID LAYOUT FIX === */
+
+.portfolio .isotope-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 kolon yan yana */
+  gap: 24px; /* kartlar arası boşluk */
+}
+
+/* Tablet görünümü */
+@media (max-width: 992px) {
+  .portfolio .isotope-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Mobil görünümü */
+@media (max-width: 576px) {
+  .portfolio .isotope-container {
+    grid-template-columns: 1fr;
+  }
 }
