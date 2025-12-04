@@ -3633,3 +3633,18 @@ ul.check-list ul {
   height: 100%;
   object-fit: cover;
 }
+
+ /* HERO IMAGE RESIZE */
+.hero .hero-image img {
+  width: 65%;       /* büyükse 50%, küçükse 80% yapabilirsin */
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.about .signature-section img {
+  width: 180px;
+  height: auto;
+  border-radius: 12px;
+}
