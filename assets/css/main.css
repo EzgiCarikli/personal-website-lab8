@@ -3681,3 +3681,30 @@ ul.check-list ul {
     height: 180px; /* mobil için daha küçük */
   }
 }
+
+/* ========== FADE-SLIDE ANIMATION ========== */
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Bunu istediğin bölüme uygulayacağız */
+.fade-slide {
+  animation: fadeSlideUp 0.9s ease-out forwards;
+}
+
+/* ========== BUTTON HOVER GLOW ========== */
+@keyframes hoverGlow {
+  from { box-shadow: none; }
+  to { box-shadow: 0 0 18px rgba(56, 189, 248, 0.7); }
+}
+
+.btn:hover {
+  animation: hoverGlow 0.25s ease forwards;
+}
