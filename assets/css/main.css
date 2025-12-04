@@ -3595,24 +3595,41 @@ ul.check-list ul {
   text-align: right;
 }
 
-/* === PORTFOLIO GRID LAYOUT FIX === */
+/* === FULL-WIDTH 3 COLUMN PORTFOLIO GRID === */
 
 .portfolio .isotope-container {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 kolon yan yana */
-  gap: 24px; /* kartlar arası boşluk */
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr); /* 3 eşit kolon */
+  gap: 30px; /* fotoğraflar arası boşluk */
+  width: 100%;
+  padding: 0 40px; /* yanlardan boşluk */
+  box-sizing: border-box;
 }
 
-/* Tablet görünümü */
+/* Tablet görünüm: 2 kolon */
 @media (max-width: 992px) {
   .portfolio .isotope-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobil görünümü */
+/* Mobil görünüm: 1 kolon */
 @media (max-width: 576px) {
   .portfolio .isotope-container {
     grid-template-columns: 1fr;
   }
+}
+
+/* Portfolio images uniform size */
+.portfolio-entry .entry-image {
+  width: 100%;
+  height: 240px; 
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+.portfolio-entry .entry-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
