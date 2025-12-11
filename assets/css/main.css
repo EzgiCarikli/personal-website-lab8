@@ -635,3 +635,10 @@ ul.check-list > li::before {
 @keyframes labSpin {
   to { transform: rotate(360deg); }
 }
+
+.about-img img {
+  width: 100%;
+  height: 200px; /* istediğin yükseklik */
+  object-fit: cover;
+  border-radius: 20px;
+}
