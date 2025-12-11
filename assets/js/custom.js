@@ -147,10 +147,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
       let formatted = "+370 ";
       if (digits.length >= 4) {
-        formatted += digits[3]; // 6
+        formatted += digits[3];
       }
       if (digits.length >= 6) {
-        formatted += digits.slice(4, 6); // xx
+        formatted += digits.slice(4, 6);
       }
       if (digits.length > 6) {
         formatted += " " + digits.slice(6);
@@ -228,8 +228,6 @@ document.addEventListener("DOMContentLoaded", function () {
   validateAll();
 });
 
-/* ===== LAB 12 - SIMPLE MEMORY GAME ===== */
-
 (function () {
   const difficultySelect = document.getElementById('mg-difficulty');
   const startBtn = document.getElementById('mg-start');
@@ -239,7 +237,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const matchesEl = document.getElementById('mg-matches');
   const messageEl = document.getElementById('mg-message');
 
-  if (!board) return; // sayfa bulunamazsa çık
+  if (!board) return;
 
   const symbols = ['A','B','C','D','E','F','G','H','I','J','K','L'];
 
@@ -250,10 +248,9 @@ document.addEventListener("DOMContentLoaded", function () {
   let totalPairs = 0;
 
   function createDeck(difficulty) {
-    const pairCount = difficulty === 'easy' ? 6 : 12; // 6 çift = 12 kart, 12 çift = 24 kart
+    const pairCount = difficulty === 'easy' ? 6 : 12;
     const used = symbols.slice(0, pairCount);
-    const deck = [...used, ...used]; // çiftler
-    // karıştır
+    const deck = [...used, ...used];
     for (let i = deck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [deck[i], deck[j]] = [deck[j], deck[i]];
@@ -312,7 +309,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const [c1, c2] = flippedCards;
     if (c1.dataset.value === c2.dataset.value) {
-      // eşleşti
+      
       c1.classList.add('matched');
       c2.classList.add('matched');
       matches++;
@@ -324,7 +321,7 @@ document.addEventListener("DOMContentLoaded", function () {
         messageEl.textContent = 'You win! All pairs matched.';
       }
     } else {
-      // eşleşmedi -> 1 sn sonra kapat
+      
       setTimeout(() => {
         c1.classList.remove('flipped');
         c2.classList.remove('flipped');
@@ -343,6 +340,5 @@ document.addEventListener("DOMContentLoaded", function () {
   startBtn.addEventListener('click', startGame);
   restartBtn.addEventListener('click', startGame);
 
-  // sayfa açılınca easy hazır olsun istersen:
-  // startGame();
+  
 })();
