@@ -665,3 +665,10 @@ ul.check-list > li::before {
 .resume .education-content * {
   color: #111827 !important;
 }
+
+/* Portfolio overlay tamamen kapatılsın */
+.portfolio .portfolio-entry .entry-image .entry-overlay {
+  background: none !important;
+  opacity: 0 !important;
+  transform: none !important;
+}
