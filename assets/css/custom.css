@@ -1,134 +1,449 @@
-
 :root {
-  --accent: #4f46e5;
-  --accent-dark: #3730a3;
-  --text: #111;
-  --bg: #f5f5ff;
+
+  --font-heading: "Quicksand", system-ui, sans-serif;
+  --font-body: "Open Sans", system-ui, sans-serif;
+
+  --background-color: #f3f4ff;
+  --surface-color: #ffffff;
+  --default-color: #111827;
+  --heading-color: #0f172a;
+  --accent-color: #4f46e5;
+  --contrast-color: #ffffff;
+
+  --color-muted: #6b7280;
+  --color-accent-dark: #3730a3;
+
+  --radius-lg: 1rem;
+  --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.12);
+
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 3rem;
 }
 
-/* Sayfa genel gradient arka plan animasyonu */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
 body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: var(--default-color);
   background: linear-gradient(135deg, #e6d6ff, #c3a4ff);
   background-size: 300% 300%;
-  animation: pageGradient 15s ease infinite;
-  font-family: "Open Sans", sans-serif;
-  color: var(--text);
+  animation: labGradient 15s ease infinite;
 }
 
-/* Başlık fontu */
-h1, h2, h3 {
-  font-family: "Quicksand", sans-serif;
-  color: #0f172a;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-heading);
+  color: var(--heading-color);
+  margin-top: 0;
 }
 
-/* ----------- BUTTON ANIMATIONS ----------- */
-.btn,
-button {
-  background: #ffffff !important;
-  color: #000000 !important;
-  border: 2px solid #000000;
-  border-radius: 50px;
-  padding: 10px 24px;
-  transition: 0.3s ease;
+h1 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
 }
 
-.btn:hover,
-button:hover {
-  background: #000000 !important;
-  color: #ffffff !important;
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  font-size: 0.98rem;
+  line-height: 1.8;
+  color: var(--color-muted);
+  margin: 0 0 0.85rem;
+}
+
+.section-title {
+  padding-bottom: var(--space-md);
+  text-align: left;
+}
+
+.section-title h2 {
+  font-size: 2.1rem;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  font-weight: 800;
+}
+
+.section-title p {
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: #6b7280;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent-dark);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+a:active {
+  color: #020617;
+}
+
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.7rem 1.6rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background-color: #0f172a;
+  color: #f9fafb;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+}
+
+button:hover,
+.btn:hover {
+  background-color: #020617;
   transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.45);
+  animation: hoverGlow 0.25s ease forwards;
 }
 
-/* ----------- CUSTOM LOADER (LAB İÇİN) ----------- */
-.lab-loader {
-  width: 40px;
-  height: 40px;
-  border: 5px solid #ddd;
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 9999;
+button:active,
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 14px rgba(15, 23, 42, 0.5);
 }
 
-/* ----------- PORTFOLIO YAZILARINI GÖRÜNÜR YAP ----------- */
-.portfolio .portfolio-entry .entry-overlay {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 0.2),
-    rgba(0, 0, 0, 0.7)
-  );
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: #f9fafb;
 }
 
-/* ----------- ABOUT RESİM AYARLAMASI ----------- */
-.about-img img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 20px;
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
 }
 
-/* ----------- KEYFRAMES ----------- */
-@keyframes pageGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.btn-outline {
+  background-color: transparent;
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+  box-shadow: none;
 }
 
-@keyframes spin {
-  to { transform: rotate(360deg); }
-
-
-
-  /* ================================
-   1) HERO BÖLÜMÜ FOTOGRAF DÜZELTME
-================================ */
-.hero {
-  padding: 120px 0;
-  min-height: 70vh !important;      /* tam ekran olmasın */
-  overflow: hidden !important;       /* taşmaları engelle */
+.btn-outline:hover {
+  background-color: var(--accent-color);
+  color: #f9fafb;
 }
 
-.hero .hero-image img {
-  width: 100%;
-  max-height: 380px !important;      /* foto yüksekliğini ayarlayan kısım */
-  object-fit: cover;
-  border-radius: 20px;
-  display: block;
-  margin: 0 auto;
+section,
+.section {
+  padding-block: var(--space-lg);
+  padding-inline: var(--space-md);
+  color: var(--default-color);
+  background-color: transparent;
 }
 
+#about {
+  padding-block: var(--space-lg);
+}
 
-/* ================================
-   2) MAVİ ŞERİTİ KALDIRMA
-   (Template'in en üstündeki gradient bar)
-================================ */
-.header::before,
-.header::after {
-  display: none !important;
+#resume,
+#services,
+#contact {
+  padding-block: var(--space-md);
+}
+
+.surface-card,
+.about .skills-grid .skill-item,
+.skills .skills-grid .skill-card,
+.resume .experience-section .experience-card,
+.resume .education-section .education-content,
+.services .service-item,
+.portfolio .portfolio-entry,
+.faq .faq-container .faq-item,
+.testimonials .testimonials-container .testimonial-item,
+.contact .info-box,
+.contact .contact-form {
+  background-color: var(--surface-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-md);
+  border: 1px solid rgba(15, 23, 42, 0.06);
+  box-shadow: var(--shadow-soft);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.surface-card:hover,
+.services .service-item:hover,
+.skills .skills-grid .skill-card:hover,
+.portfolio .portfolio-entry:hover,
+.testimonials .testimonials-container .testimonial-item:hover,
+.faq .faq-container .faq-item.faq-active,
+.resume .experience-section .experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 22px 55px rgba(15, 23, 42, 0.15);
 }
 
 .header {
-  background: rgba(15, 23, 42, 0.9) !important;  
-  box-shadow: none !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  padding: 0.8rem 0;
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.95),
+    rgba(79, 70, 229, 0.95)
+  );
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.5);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  z-index: 999;
 }
 
-
-/* ================================
-   3) SAYFA TAŞMASINI DÜZELT
-================================ */
-body, html {
-  overflow-x: hidden !important;
+.header .logo h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #e5e7eb;
 }
 
-/* ================================
-   6) PORTFOLIO FOTOĞRAFLARI BOZULMASIN
-================================ */
+.header .logo img {
+  max-height: 36px;
+}
+
+/* Mobile nav menu */
+.navmenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -320px;
+  width: 320px;
+  background: radial-gradient(
+    circle at top left,
+    rgba(59, 130, 246, 0.35),
+    rgba(15, 23, 42, 0.98)
+  );
+  box-shadow: -10px 0 40px rgba(15, 23, 42, 0.75);
+  border-radius: 24px 0 0 24px;
+  border-left: 1px solid rgba(148, 163, 184, 0.4);
+  overflow: hidden;
+  transition: right 0.3s ease;
+  z-index: 997;
+}
+
+.mobile-nav-active .navmenu {
+  right: 10px;
+  top: 10px;
+  bottom: 10px;
+}
+
+.navmenu .profile-img img {
+  margin: 15px auto;
+  display: block;
+  width: 160px;
+  border-radius: 999px;
+  border: 4px solid rgba(248, 250, 252, 0.7);
+}
+
+.navmenu ul {
+  list-style: none;
+  padding: 10px 0;
+  margin: 0;
+  overflow-y: auto;
+}
+
+.navmenu a,
+.navmenu a:focus {
+  color: rgba(226, 232, 240, 0.85);
+  padding: 10px 20px;
+  font-family: var(--font-body);
+  font-size: 0.98rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.3s;
+}
+
+.navmenu a i,
+.navmenu a:focus i {
+  font-size: 12px;
+  margin-left: 5px;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(15, 23, 42, 0.7);
+  color: #e5e7eb;
+}
+
+.navmenu a:hover,
+.navmenu .active,
+.navmenu .active:focus {
+  color: #ffffff;
+}
+
+.navmenu .active i,
+.navmenu .active:focus i {
+  background-color: #38bdf8;
+  color: #0f172a;
+}
+
+.mobile-nav-toggle {
+  color: #e5e7eb;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  font-size: 32px;
+  line-height: 0;
+  cursor: pointer;
+  display: block !important;
+  z-index: 998;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 999px;
+  padding: 0.55rem;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
+}
+
+.hero {
+  padding: 120px 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero .hero-content {
+  max-width: 640px;
+}
+
+.hero .hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.4rem;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+@media (min-width: 992px) {
+  .hero .hero-actions {
+    justify-content: flex-end;
+  }
+}
+
+.hero .hero-image img {
+  width: 70%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border-radius: 20px;
+}
+
+.portfolio .portfolio-filters {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 0;
+  margin: 0 0 30px;
+  list-style: none;
+}
+
+.portfolio .portfolio-filters li {
+  padding: 8px 20px;
+  border-radius: 999px;
+  background: rgba(15, 23, 42, 0.04);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #111827;
+  transition: 0.2s;
+}
+
+.portfolio .portfolio-filters li.filter-active {
+  background: var(--accent-color);
+  color: #f9fafb;
+}
+
+.portfolio .portfolio-filters li:hover {
+  background: rgba(79, 70, 229, 0.12);
+  transform: translateY(-2px);
+}
+
+.portfolio .isotope-container {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  width: 100%;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+@media (max-width: 992px) {
+  .portfolio .isotope-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .portfolio .isotope-container {
+    grid-template-columns: 1fr;
+    padding: 0;
+  }
+}
+
 .portfolio-entry .entry-image {
   width: 100%;
   height: 240px;
@@ -142,16 +457,198 @@ body, html {
   object-fit: cover;
 }
 
+.services .service-item h3,
+.skills .skills-grid .skill-card h3,
+.faq .faq-container .faq-item h3,
+.testimonials .testimonial-item h3 {
+  margin-bottom: 0.5rem;
+}
 
-/* ================================
-   7) Portfolio overlay yazılar her zaman görünsün
-================================ */
+.faq .faq-container .faq-item {
+  cursor: pointer;
+}
+
+.contact .info-box {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.contact .info-box a {
+  color: var(--contrast-color);
+}
+
+.contact .contact-form .form-label {
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.contact-output p {
+  margin-bottom: 0.25rem;
+  font-size: 0.95rem;
+}
+
+.field-error {
+  font-size: 0.8rem;
+  color: #dc3545;
+  margin-top: 0.15rem;
+}
+
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+
+.form-control.is-valid {
+  border-color: #198754;
+}
+
+.contact-form .btn[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.scroll-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 18px;
+  visibility: hidden;
+  opacity: 0;
+  background: radial-gradient(circle at 20% 0%, #38bdf8, #1d4ed8);
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    opacity 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+  z-index: 99999;
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.scroll-top i {
+  font-size: 22px;
+  color: #f9fafb;
+}
+
+.scroll-top:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 24px 60px rgba(15, 23, 42, 0.9);
+}
+
+ol.fancy-list {
+  list-style: none;
+  counter-reset: fancy-counter;
+  padding-left: 0;
+}
+
+ol.fancy-list > li {
+  counter-increment: fancy-counter;
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 0.6rem;
+}
+
+ol.fancy-list > li::before {
+  content: counter(fancy-counter, decimal-leading-zero);
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  background: #1d4ed8;
+  color: #f9fafb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+  padding: 0.15rem 0.6rem;
+}
+
+ul.check-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.check-list > li {
+  position: relative;
+  padding-left: 1.8rem;
+  margin-bottom: 0.4rem;
+}
+
+ul.check-list > li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0.1rem;
+  font-weight: 700;
+  color: #16a34a;
+}
+
+.table-custom {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+
+/* --------------------------------------------------------------
+   Animations & helpers
+-------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@keyframes labGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes hoverGlow {
+  from { box-shadow: none; }
+  to { box-shadow: 0 0 18px rgba(56, 189, 248, 0.7); }
+}
+
+.lab-loader {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ddd;
+  border-top-color: var(--accent-color);
+  border-radius: 50%;
+  animation: labSpin 1s linear infinite;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  background: transparent;
+}
+
+@keyframes labSpin {
+  to { transform: rotate(360deg); }
+}
+
+.about-img img {
+  width: 100%;
+  height: 200px; /* istediğin yükseklik */
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* Portfolio kartlarının üzerindeki yazıları her zaman göster */
 .portfolio .portfolio-entry .entry-image .entry-overlay {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
+  opacity: 1;
+  transform: translateY(0);
+}
+.portfolio .portfolio-entry .entry-image .entry-overlay {
   background: linear-gradient(
     180deg,
     rgba(0, 0, 0, 0.25),
     rgba(0, 0, 0, 0.75)
-  ) !important;
-}
+  );
+} 
