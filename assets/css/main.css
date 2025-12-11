@@ -871,8 +871,8 @@ section,
 
 .about .profile-image-wrapper .profile-image {
   position: relative;
-  width: 280px;
-  height: 280px;
+  width: 180px;
+  height: 180px;
   margin: 0 auto 40px;
   border-radius: 50%;
   overflow: hidden;
@@ -3167,12 +3167,13 @@ section,
 }
 
 /*--------------------------------------------------------------
-# Starter Section Section
+# Starter Section
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
 }
 
+/* Typography & Global Text Styles */
 body {
   font-family: "Roboto", system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 16px;
@@ -3180,6 +3181,7 @@ body {
   letter-spacing: 0.01em;
   color: #1f2933;
 }
+
 h1,
 h2,
 h3 {
@@ -3188,23 +3190,25 @@ h3 {
 }
 
 h1 {
-  font-size: 2.75rem;       
+  font-size: 2.75rem;
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-bottom: 1.25rem;
 }
+
 h2 {
-  font-size: 2.1rem;        
+  font-size: 2.1rem;
   font-weight: 700;
   line-height: 1.2;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
+
 h3 {
-  font-size: 1.35rem;       
+  font-size: 1.35rem;
   font-weight: 600;
   line-height: 1.3;
   letter-spacing: 0.06em;
@@ -3212,7 +3216,7 @@ h3 {
 }
 
 p {
-  font-size: 0.98rem;       
+  font-size: 0.98rem;
   font-weight: 400;
   line-height: 1.8;
   letter-spacing: 0.01em;
@@ -3236,10 +3240,9 @@ p {
   color: #6b7280;
 }
 
-
-
+/* Links */
 a {
-  color: #2563eb;                
+  color: #2563eb;
   text-decoration: none;
   font-weight: 500;
   letter-spacing: 0.02em;
@@ -3247,17 +3250,17 @@ a {
 }
 
 a:hover {
-  color: #1d4ed8;                
+  color: #1d4ed8;
   text-decoration: underline;
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
 }
 
 a:active {
-  color: #0f172a;                 
+  color: #0f172a;
 }
 
-
+/* Buttons */
 button,
 .btn {
   display: inline-flex;
@@ -3270,15 +3273,15 @@ button,
   font-weight: 600;
   font-size: 0.95rem;
   cursor: pointer;
-  background-color: #0f172a;   
-  color: #f9fafb;             
+  background-color: #0f172a;
+  color: #f9fafb;
   box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
-  transition: background-color 0.15s ease,
-              transform 0.1s ease,
-              box-shadow 0.15s ease,
-              border-color 0.15s ease;
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
 }
-
 
 button:hover,
 .btn:hover {
@@ -3287,13 +3290,11 @@ button:hover,
   box-shadow: 0 14px 30px rgba(15, 23, 42, 0.45);
 }
 
-
 button:active,
 .btn:active {
   transform: translateY(0);
   box-shadow: 0 5px 14px rgba(15, 23, 42, 0.5);
 }
-
 
 .btn-primary {
   background-color: #1d4ed8;
@@ -3310,7 +3311,6 @@ button:active,
   background-color: #172554;
   border-color: #172554;
 }
-
 
 .btn-outline {
   background-color: transparent;
@@ -3330,6 +3330,7 @@ button:active,
   border-color: #172554;
 }
 
+/* Spacing scale */
 :root {
   --space-xs: 0.5rem;
   --space-sm: 1rem;
@@ -3338,6 +3339,7 @@ button:active,
   --space-xl: 3rem;
 }
 
+/* Section padding */
 section,
 .section {
   padding-block: var(--space-xl);
@@ -3348,19 +3350,20 @@ section,
   padding-block: var(--space-xl);
 }
 
-#resume {
-  padding-block: var(--space-lg);
-}
-
-#services {
-  padding-block: var(--space-lg);
-}
-
+#resume,
+#services,
 #contact {
   padding-block: var(--space-lg);
 }
 
-.surface-card {
+/* Shared card style */
+.surface-card,
+.about .skills-grid .skill-item,
+.skills .skills-grid .skill-card,
+.resume .experience-section .experience-card,
+.resume .education-section .education-content,
+.contact .info-box,
+.contact .contact-form {
   background-color: #ffffff;
   border-radius: 1.25rem;
   padding: var(--space-md);
@@ -3374,25 +3377,16 @@ section,
   box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
 }
 
-.about .skills-grid .skill-item,
-.skills .skills-grid .skill-card,
-.resume .experience-section .experience-card,
-.resume .education-section .education-content,
-.contact .info-box,
-.contact .contact-form {
-  background-color: #ffffff;
-  border-radius: 1.25rem;
-  padding: var(--space-md);
-  border: 1px solid rgba(15, 23, 42, 0.06);
-  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.08);
-}
-
-
+/* Header customization */
 .header {
   position: sticky;
   top: 0;
   padding: 0.8rem 0;
-  background: linear-gradient(to right, rgba(15, 23, 42, 0.92), rgba(30, 64, 175, 0.92));
+  background: linear-gradient(
+    to right,
+    rgba(15, 23, 42, 0.92),
+    rgba(30, 64, 175, 0.92)
+  );
   backdrop-filter: blur(14px);
   box-shadow: 0 18px 45px rgba(15, 23, 42, 0.5);
   border-bottom: 1px solid rgba(148, 163, 184, 0.3);
@@ -3411,10 +3405,15 @@ section,
   max-height: 36px;
 }
 
+/* Mobile nav */
 .navmenu {
   right: -320px;
   width: 320px;
-  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.35), rgba(15, 23, 42, 0.98));
+  background: radial-gradient(
+    circle at top left,
+    rgba(59, 130, 246, 0.35),
+    rgba(15, 23, 42, 0.98)
+  );
   box-shadow: -10px 0 40px rgba(15, 23, 42, 0.75);
   border-radius: 24px 0 0 24px;
   border-left: 1px solid rgba(148, 163, 184, 0.4);
@@ -3465,7 +3464,7 @@ section,
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.7);
 }
 
-
+/* Scroll to top button */
 .scroll-top {
   width: 52px;
   height: 52px;
@@ -3477,7 +3476,10 @@ section,
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: opacity 0.25s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  transition:
+    opacity 0.25s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
 }
 
 .scroll-top i {
@@ -3495,7 +3497,7 @@ section,
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.85);
 }
 
-
+/* Fancy ordered list */
 ol.fancy-list {
   list-style: none;
   counter-reset: fancy-counter;
@@ -3522,7 +3524,7 @@ ol.fancy-list > li::before {
   padding: 0.15rem 0.6rem;
 }
 
-
+/* Check list */
 ul.check-list {
   list-style: none;
   padding-left: 0;
@@ -3543,14 +3545,13 @@ ul.check-list > li::before {
   color: #16a34a;
 }
 
-/* nested ul */
 ul.check-list ul {
   margin-top: 0.3rem;
   padding-left: 1.5rem;
   opacity: 0.9;
 }
 
-
+/* Table styling */
 .table-custom {
   width: 100%;
   border-collapse: collapse;
@@ -3586,7 +3587,6 @@ ul.check-list ul {
   border-bottom: 1px solid rgba(148, 163, 184, 0.6);
 }
 
-
 .table-custom td.text {
   text-align: left;
 }
@@ -3595,25 +3595,24 @@ ul.check-list ul {
   text-align: right;
 }
 
-/* === FULL-WIDTH 3 COLUMN PORTFOLIO GRID === */
-
+/* Portfolio grid */
 .portfolio .isotope-container {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr); /* 3 eşit kolon */
-  gap: 30px; /* fotoğraflar arası boşluk */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
   width: 100%;
-  padding: 0 40px; /* yanlardan boşluk */
+  padding: 0 40px;
   box-sizing: border-box;
 }
 
-/* Tablet görünüm: 2 kolon */
+/* Tablet: 2 columns */
 @media (max-width: 992px) {
   .portfolio .isotope-container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-/* Mobil görünüm: 1 kolon */
+/* Mobile: 1 column */
 @media (max-width: 576px) {
   .portfolio .isotope-container {
     grid-template-columns: 1fr;
@@ -3623,7 +3622,7 @@ ul.check-list ul {
 /* Portfolio images uniform size */
 .portfolio-entry .entry-image {
   width: 100%;
-  height: 240px; 
+  height: 240px;
   overflow: hidden;
   border-radius: 20px;
 }
@@ -3634,33 +3633,30 @@ ul.check-list ul {
   object-fit: cover;
 }
 
- /* HERO IMAGE RESIZE */
+/* Hero image resize */
 .hero .hero-image img {
-  width: 70%;       /* büyükse 50%, küçükse 80% yapabilirsin */
+  width: 70%;
   height: auto;
   display: block;
   margin: 0 auto;
   border-radius: 20px;
 }
 
-/* === SERVICES MEDIA GRID – PHOTO & VIDEO UNIFY === */
-
-/* Grid container */
+/* Services media grid (photo + video) */
 .service-details .service-gallery {
   display: grid !important;
-  grid-template-columns: repeat(3, 1fr);   /* 3 sütun */
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   margin-top: 20px;
 }
 
-/* Fotoğraf + video boyutları */
 .service-details .service-gallery img,
 .service-details .service-gallery video {
   width: 100%;
-  height: 220px;             /* ORTA BOY – istersen 200 / 180 yazabiliriz */
-  object-fit: cover;         /* Kırparak düzgün görünür */
+  height: 220px;
+  object-fit: cover;
   border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* Tablet */
@@ -3670,7 +3666,7 @@ ul.check-list ul {
   }
 }
 
-/* Mobil */
+/* Mobile */
 @media (max-width: 576px) {
   .service-details .service-gallery {
     grid-template-columns: 1fr;
@@ -3678,11 +3674,11 @@ ul.check-list ul {
 
   .service-details .service-gallery img,
   .service-details .service-gallery video {
-    height: 180px; /* mobil için daha küçük */
+    height: 180px;
   }
 }
 
-/* ========== FADE-SLIDE ANIMATION ========== */
+/* Fade-slide animation */
 @keyframes fadeSlideUp {
   from {
     opacity: 0;
@@ -3694,15 +3690,18 @@ ul.check-list ul {
   }
 }
 
-/* Bunu istediğin bölüme uygulayacağız */
 .fade-slide {
   animation: fadeSlideUp 0.9s ease-out forwards;
 }
 
-/* ========== BUTTON HOVER GLOW ========== */
+/* Button hover glow */
 @keyframes hoverGlow {
-  from { box-shadow: none; }
-  to { box-shadow: 0 0 18px rgba(56, 189, 248, 0.7); }
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: 0 0 18px rgba(56, 189, 248, 0.7);
+  }
 }
 
 .btn:hover {
