@@ -642,3 +642,16 @@ ul.check-list > li::before {
   object-fit: cover;
   border-radius: 20px;
 }
+
+/* Portfolio kartlarının üzerindeki yazıları her zaman göster */
+.portfolio .portfolio-entry .entry-image .entry-overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+.portfolio .portfolio-entry .entry-image .entry-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.75)
+  );
+}
