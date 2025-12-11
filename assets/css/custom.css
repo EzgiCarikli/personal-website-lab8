@@ -652,3 +652,16 @@ ul.check-list > li::before {
     rgba(0, 0, 0, 0.75)
   );
 } 
+
+/* Skill & Resume cards text always visible */
+.skills .skill-card,
+.skills .skill-card * {
+  color: #111827 !important;
+}
+
+.resume .experience-card,
+.resume .experience-card *,
+.resume .education-content,
+.resume .education-content * {
+  color: #111827 !important;
+}
