@@ -1,0 +1,84 @@
+
+:root {
+  --accent: #4f46e5;
+  --accent-dark: #3730a3;
+  --text: #111;
+  --bg: #f5f5ff;
+}
+
+/* Sayfa genel gradient arka plan animasyonu */
+body {
+  background: linear-gradient(135deg, #e6d6ff, #c3a4ff);
+  background-size: 300% 300%;
+  animation: pageGradient 15s ease infinite;
+  font-family: "Open Sans", sans-serif;
+  color: var(--text);
+}
+
+/* Başlık fontu */
+h1, h2, h3 {
+  font-family: "Quicksand", sans-serif;
+  color: #0f172a;
+}
+
+/* ----------- BUTTON ANIMATIONS ----------- */
+.btn,
+button {
+  background: #ffffff !important;
+  color: #000000 !important;
+  border: 2px solid #000000;
+  border-radius: 50px;
+  padding: 10px 24px;
+  transition: 0.3s ease;
+}
+
+.btn:hover,
+button:hover {
+  background: #000000 !important;
+  color: #ffffff !important;
+  transform: translateY(-2px);
+}
+
+/* ----------- CUSTOM LOADER (LAB İÇİN) ----------- */
+.lab-loader {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ddd;
+  border-top-color: var(--accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+/* ----------- PORTFOLIO YAZILARINI GÖRÜNÜR YAP ----------- */
+.portfolio .portfolio-entry .entry-overlay {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.7)
+  );
+}
+
+/* ----------- ABOUT RESİM AYARLAMASI ----------- */
+.about-img img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* ----------- KEYFRAMES ----------- */
+@keyframes pageGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
