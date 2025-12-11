@@ -6,7 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const outputBox = document.getElementById("contact-output");
   const popup = document.getElementById("form-popup");
 
-  // Formdaki alanları tek yerden yönetelim
   const fields = {
     firstName: {
       selector: 'input[name="name"]',
@@ -63,7 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
     return form.querySelector(cfg.selector);
   }
 
-  // Tek alanı validate eden fonksiyon
   function validateField(key) {
     const cfg = fields[key];
     const el = getFieldEl(key);
@@ -104,7 +102,6 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
 
-    // Görsel feedback
     const errorEl =
       el.parentElement.querySelector(".field-error");
     el.classList.remove("is-valid", "is-invalid");
@@ -134,26 +131,20 @@ document.addEventListener("DOMContentLoaded", function () {
     return allValid;
   }
 
-  // Telefon input maskesi (LT formatına benzer)
   const phoneInput = getFieldEl("phone");
   if (phoneInput) {
     phoneInput.addEventListener("input", (e) => {
       let digits = e.target.value.replace(/\D/g, "");
 
-      // 86xxxx -> 3706xxxx şekline çevir
       if (digits.startsWith("86")) {
         digits = "3706" + digits.slice(2);
       }
-
-      // 3706 ile başlamıyorsa zorla
       if (!digits.startsWith("3706")) {
         digits = "3706" + digits.replace(/^3706/, "");
       }
-
-      // En fazla +370 6xx xxxxx (11 rakam) kadar
       digits = digits.slice(0, 11);
 
-      // +370 6xx xxxxx formatla
+
       let formatted = "+370 ";
       if (digits.length >= 4) {
         formatted += digits[3]; // 6
@@ -169,8 +160,6 @@ document.addEventListener("DOMContentLoaded", function () {
       validateAll();
     });
   }
-
-  // Real-time validation: input/change eventleri
   Object.keys(fields).forEach((key) => {
     const el = getFieldEl(key);
     if (!el) return;
@@ -185,16 +174,13 @@ document.addEventListener("DOMContentLoaded", function () {
       validateAll();
     });
   });
-
-  // Submit işlemi
   form.addEventListener("submit", function (e) {
-    e.preventDefault(); // sayfanın reload olmasını engelle
+    e.preventDefault(); 
 
     if (!validateAll()) {
       return;
     }
 
-    // Tüm değerleri JS objesine topla
     const data = {};
     Object.keys(fields).forEach((key) => {
       const cfg = fields[key];
@@ -212,7 +198,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     console.log("Contact form data:", data);
 
-    // Aynı veriyi formun altında göster
     if (outputBox) {
       outputBox.innerHTML = "";
       Object.entries(data).forEach(([label, value]) => {
@@ -221,16 +206,12 @@ document.addEventListener("DOMContentLoaded", function () {
         outputBox.appendChild(p);
       });
     }
-
-    // Popup göster
     if (popup) {
       popup.classList.add("show");
       setTimeout(() => {
         popup.classList.remove("show");
       }, 2500);
     }
-
-    // Formu temizle ve butonu tekrar disable yap
     form.reset();
     Object.keys(fields).forEach((key) => {
       const el = getFieldEl(key);
@@ -244,6 +225,124 @@ document.addEventListener("DOMContentLoaded", function () {
     if (submitBtn) submitBtn.disabled = true;
   });
 
-  // Sayfa açıldığında da kontrol et
   validateAll();
 });
+
+/* ===== LAB 12 - SIMPLE MEMORY GAME ===== */
+
+(function () {
+  const difficultySelect = document.getElementById('mg-difficulty');
+  const startBtn = document.getElementById('mg-start');
+  const restartBtn = document.getElementById('mg-restart');
+  const board = document.getElementById('mg-board');
+  const movesEl = document.getElementById('mg-moves');
+  const matchesEl = document.getElementById('mg-matches');
+  const messageEl = document.getElementById('mg-message');
+
+  if (!board) return; // sayfa bulunamazsa çık
+
+  const symbols = ['A','B','C','D','E','F','G','H','I','J','K','L'];
+
+  let moves = 0;
+  let matches = 0;
+  let flippedCards = [];
+  let lockBoard = false;
+  let totalPairs = 0;
+
+  function createDeck(difficulty) {
+    const pairCount = difficulty === 'easy' ? 6 : 12; // 6 çift = 12 kart, 12 çift = 24 kart
+    const used = symbols.slice(0, pairCount);
+    const deck = [...used, ...used]; // çiftler
+    // karıştır
+    for (let i = deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+    totalPairs = pairCount;
+    return deck;
+  }
+
+  function resetStats() {
+    moves = 0;
+    matches = 0;
+    movesEl.textContent = '0';
+    matchesEl.textContent = '0';
+    messageEl.textContent = '';
+    flippedCards = [];
+    lockBoard = false;
+  }
+
+  function renderBoard(difficulty) {
+    const deck = createDeck(difficulty);
+    board.innerHTML = '';
+    board.classList.remove('easy', 'hard');
+    board.classList.add(difficulty);
+
+    deck.forEach(symbol => {
+      const card = document.createElement('div');
+      card.className = 'mg-card';
+      card.dataset.value = symbol;
+
+      const span = document.createElement('span');
+      span.textContent = symbol;
+      card.appendChild(span);
+
+      card.addEventListener('click', () => onCardClick(card));
+
+      board.appendChild(card);
+    });
+  }
+
+  function onCardClick(card) {
+    if (lockBoard) return;
+    if (card.classList.contains('flipped') || card.classList.contains('matched')) return;
+
+    card.classList.add('flipped');
+    flippedCards.push(card);
+
+    if (flippedCards.length === 2) {
+      checkMatch();
+    }
+  }
+
+  function checkMatch() {
+    lockBoard = true;
+    moves++;
+    movesEl.textContent = moves.toString();
+
+    const [c1, c2] = flippedCards;
+    if (c1.dataset.value === c2.dataset.value) {
+      // eşleşti
+      c1.classList.add('matched');
+      c2.classList.add('matched');
+      matches++;
+      matchesEl.textContent = matches.toString();
+      flippedCards = [];
+      lockBoard = false;
+
+      if (matches === totalPairs) {
+        messageEl.textContent = 'You win! All pairs matched.';
+      }
+    } else {
+      // eşleşmedi -> 1 sn sonra kapat
+      setTimeout(() => {
+        c1.classList.remove('flipped');
+        c2.classList.remove('flipped');
+        flippedCards = [];
+        lockBoard = false;
+      }, 1000);
+    }
+  }
+
+  function startGame() {
+    resetStats();
+    const diff = difficultySelect.value;
+    renderBoard(diff);
+  }
+
+  startBtn.addEventListener('click', startGame);
+  restartBtn.addEventListener('click', startGame);
+
+  // sayfa açılınca easy hazır olsun istersen:
+  // startGame();
+})();

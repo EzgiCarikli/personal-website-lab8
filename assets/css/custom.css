@@ -726,3 +726,85 @@ ul.check-list > li::before {
   margin: 0;
   font-size: 0.9rem;
 }
+
+/* ===== LAB 12 - SIMPLE MEMORY GAME ===== */
+
+#memory-game h2 {
+  margin-bottom: 0.75rem;
+}
+
+.mg-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.mg-controls label {
+  font-weight: 600;
+}
+
+.mg-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.mg-board {
+  display: grid;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+/* Easy = 4x3 */
+.mg-board.easy {
+  grid-template-columns: repeat(4, 70px);
+}
+
+/* Hard = 6x4 */
+.mg-board.hard {
+  grid-template-columns: repeat(6, 60px);
+}
+
+.mg-card {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  background: #4f46e5;
+  color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 700;
+}
+
+/* kapalı kart */
+.mg-card span {
+  visibility: hidden;
+}
+
+/* açılmış kart */
+.mg-card.flipped {
+  background: #ffffff;
+  color: #111827;
+}
+
+.mg-card.flipped span {
+  visibility: visible;
+}
+
+/* eşleşmiş kart */
+.mg-card.matched {
+  background: #22c55e;
+  color: #ffffff;
+  cursor: default;
+}
+
+#mg-message {
+  margin-top: 0.75rem;
+  font-weight: 600;
+}

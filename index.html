@@ -1038,6 +1038,39 @@
 
     </section><!-- /Faq Section -->
 
+    <section id="memory-game" class="section">
+  <div class="container">
+
+    <h2>Memory Game</h2>
+
+    <!-- Kontroller -->
+    <div class="mg-controls">
+      <label for="mg-difficulty">Difficulty:</label>
+      <select id="mg-difficulty">
+        <option value="easy">Easy (4x3)</option>
+        <option value="hard">Hard (6x4)</option>
+      </select>
+
+      <button id="mg-start" class="btn btn-primary">Start</button>
+      <button id="mg-restart" class="btn btn-outline">Restart</button>
+    </div>
+
+    <!-- İstatistikler -->
+    <div class="mg-stats">
+      <span>Moves: <strong id="mg-moves">0</strong></span>
+      <span>Matches: <strong id="mg-matches">0</strong></span>
+    </div>
+
+    <!-- Oyun tahtası -->
+    <div id="mg-board" class="mg-board">
+      <!-- kartlar JS ile gelecek -->
+    </div>
+
+    <!-- mesaj alanı -->
+    <p id="mg-message"></p>
+  </div>
+</section>
+
     <!-- Contact Section -->
     <section id="contact" class="contact section light-background">
 
