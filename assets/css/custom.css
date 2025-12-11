@@ -672,3 +672,20 @@ ul.check-list > li::before {
   opacity: 0 !important;
   transform: none !important;
 }
+
+
+/* Büyük mor/mavi kartı (image-container arka plan bloğu) kapat */
+.hero .image-container::before {
+  background: transparent !important;
+}
+
+/* Fotoğrafın üstündeki karartma overlay'i kapat */
+.hero .image-overlay {
+  background: transparent !important;
+  opacity: 0 !important;
+}
+
+/* Fotoğrafı tam renkli yap (template'de blur / dark varsa iptal) */
+.hero .image-container img {
+  filter: none !important;
+}
